@@ -48,7 +48,7 @@ function BookingDetails({ booking, setDeleted }) {
         <h2 className="text-primary-100 text-xl font-bold">
           {booking.purpose}
         </h2>
-        {(user.data.id === booking.user._id || isAdmin) && (
+        {(user.data.id === booking.user._id || isAdmin) && setDeleted && (
           <button
             type="button"
             className="cursor-pointer text-red-500 transition hover:text-red-400"
