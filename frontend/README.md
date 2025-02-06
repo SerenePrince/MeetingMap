@@ -1,7 +1,5 @@
 # MeetingMap - Frontend
 
-![image](https://github.com/user-attachments/assets/d5237b8e-92c2-4b12-bc0b-34f4ed52565b)
-
 This is the front-end application for **MeetingMap**, a tool to help corporate teams book meeting rooms and manage bookings.
 
 [Try it here!](https://meetingmap.onrender.com)
