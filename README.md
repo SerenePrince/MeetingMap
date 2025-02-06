@@ -1,150 +1,121 @@
-# LinkLounge
+# MeetingMap
 
-LinkLounge is a full-stack web application that allows users to create customizable lounges for showcasing their social media links, personal websites, and other online profiles. The project consists of a **React frontend** and a **Node.js/Express backend** with a **MongoDB** database.
+**MeetingMap** is a full-stack application designed to help corporate teams book meeting rooms efficiently. The system includes user authentication, room management, and booking functionalities. Admins can manage rooms and users, while regular users can view and book available rooms.
 
-![loungeExample](https://github.com/user-attachments/assets/301f6177-cbf5-4df3-b949-2cd3938c582a)
+![image](https://github.com/user-attachments/assets/446a5a6d-d48f-4b14-bb1b-221a700ac7c7)
 
-## About the Project
-This project is a personal endeavor developed solely by me, **Noah Park-Nguyen**. The goal is to provide users with an easy way to create personalized link hubs with a visually appealing and responsive interface.
+## Live Demo
+[Try it here!](https://meetingmap.onrender.com)
 
 ## Features
-### **Frontend**
-- **User Authentication**
-  - Login and sign-up functionality.
-  - Secure session management integrated with the backend API.
-- **Customizable Lounges**
-  - Create and manage personal lounges with links, images, and social media profiles.
-  - Drag-and-drop image upload and customization.
-- **Responsive Design**
-  - Fully optimized for phones, tablets, and desktops.
-- **Feedback System**
-  - Users can provide feedback to help improve the platform.
-- **Themes and Styling**
-  - Custom Tailwind CSS palette for a unique and sleek design.
 
-### **Backend API**
-- **User Management**
-  - Securely store user credentials and profile data.
-  - Authentication using JWT (JSON Web Tokens).
-- **Lounge Management**
-  - Create, update, and delete lounges.
-  - Store and manage links to various social media and websites.
-- **Image Hosting**
-  - Integration with **Cloudinary** for image uploads.
-  - Store Cloudinary URLs in the database for seamless frontend display.
+### Backend Features
+- User authentication (JWT-based authentication).
+- Room management (create, update, delete rooms).
+- Booking management (create, update, delete bookings, prevent double bookings).
+- Admin features (manage users, rooms, and bookings).
+- Automatic deletion of expired bookings via `node-cron`.
+
+### Frontend Features
+- User authentication (Sign Up, Log In).
+- Room booking (view, create, update, and delete bookings).
+- Admin management (view and manage users, rooms, and bookings).
+- Responsive and modern UI with dark mode support.
 
 ## Technologies Used
-### **Frontend**
-- **React** - Dynamic and interactive UI
-- **Tailwind CSS** - Responsive and modern styling
-- **Axios** - API requests
-- **React Router** - Client-side routing
-- **Cloudinary** - Image storage and management
 
-### **Backend**
-- **Node.js** - Server-side runtime
-- **Express.js** - Web framework for API development
-- **MongoDB** - NoSQL database for user and lounge storage
-- **Cloudinary** - Media storage for lounge images
-- **JWT Authentication** - Secure user authentication
+### Backend
+- Node.js (Express.js for the server)
+- MongoDB (Mongoose for ODM)
+- JSON Web Token (JWT) for authentication
+- `node-cron` for scheduling tasks
+- Bcrypt.js for password hashing
+- Dotenv for environment variable management
 
-## Getting Started
-### **Prerequisites**
-Ensure you have the following installed:
-- [Node.js](https://nodejs.org/) (version 14+ recommended)
-- [MongoDB](https://www.mongodb.com/try/download/community)
-- [Cloudinary Account](https://cloudinary.com/)
+### Frontend
+- React (with hooks, Context API, and React Router)
+- Vite for fast build and development
+- Tailwind CSS for styling
+- React Query for data fetching
 
-### **Installation**
-#### **Clone the repository**
-```bash
-git clone https://github.com/sereneprince/LinkLounge.git
-cd LinkLounge
-```
+## Installation
 
-#### **Setup the Frontend**
-```bash
-cd frontend
-npm install
-```
-Create a `.env` file in the `frontend` directory and add the following:
-```env
-VITE_NODE_ENV=development
-VITE_CLOUD_NAME=your-cloudinary-cloud-name
-VITE_API_KEY=your-cloudinary-api-key
-VITE_API_SECRET=your-cloudinary-api-secret
-VITE_CLOUDINARY_URL=your-cloudinary-url
-VITE_PROD_URL=linklounge-2inr.onrender.com
-```
-Run the frontend:
-```bash
-npm start
-```
-The frontend will be available at `http://localhost:3000`.
+### Backend Installation
 
-#### **Setup the Backend**
-```bash
-cd ../backend
-npm install
-```
-Create a `.env` file in the `backend` directory and add the following:
-```env
-PORT=5000
-MONGO_URI=your-mongodb-connection-string
-CLOUDINARY_CLOUD_NAME=your-cloudinary-cloud-name
-CLOUDINARY_API_KEY=your-cloudinary-api-key
-CLOUDINARY_API_SECRET=your-cloudinary-api-secret
-JWT_SECRET=your-jwt-secret
-```
-Run the backend:
-```bash
-npm start
-```
-The API will be available at `http://localhost:5000`.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sereneprince/MeetingMap.git
+   cd MeetingMap/backend
+   ```
 
-## API Endpoints
-### **Authentication**
-- **POST** `/api/auth/register` - Register a new user.
-- **POST** `/api/auth/login` - Log in an existing user.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-### **User Management**
-- **GET** `/api/users/me` - Retrieve logged-in user's information (authentication required).
+3. Set up environment variables:
+   - Create a `.env` file in the root directory and add the following:
+     ```bash
+     PORT=5000
+     MONGO_URI=YOUR_MONGO_DB_CONNECTION_URL
+     NODE_ENV=development
+     JWT_SECRET=YOUR_JWT_SECRET
+     FRONTEND_URL=YOUR_FRONTEND_URL
+     ADMIN_EMAIL=your_admin_email@example.com
+     ADMIN_PASSWORD=your_admin_password
+     ```
 
-### **Lounge Management**
-- **POST** `/api/lounges` - Create a new lounge.
-- **GET** `/api/lounges` - Retrieve all lounges.
-- **GET** `/api/lounges/:id` - Retrieve a specific lounge by ID.
-- **PUT** `/api/lounges/:id` - Update a lounge by ID.
-- **DELETE** `/api/lounges/:id` - Delete a lounge by ID.
+4. Start the server:
+   ```bash
+   npm run dev
+   ```
 
-### **Image Upload**
-- **POST** `/api/uploads` - Upload an image and get a Cloudinary URL.
+### Frontend Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/sereneprince/MeetingMap.git
+   cd MeetingMap/frontend
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   - Create a `.env.local` file in the root directory and add the following:
+     ```bash
+     VITE_API_URL=YOUR_BACKEND_URL
+     VITE_NODE_ENV=development
+     ```
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
 ## Deployment
-### **To Deploy Locally**
-- Use tools like [Postman](https://www.postman.com/) or the browser developer console to test API interactions.
 
-### **To Deploy to Production**
-#### **Frontend**
-1. Build the production-ready frontend:
+### Backend Deployment
+
+1. Set up environment variables on the production server (as mentioned above).
+2. Ensure MongoDB is connected to the production database.
+3. Set the `FRONTEND_URL` correctly for CORS and redirection.
+4. Use a process manager like **PM2** to run the application in production:
+   ```bash
+   pm2 start server.js --name "meetingmap-api"
+   ```
+
+### Frontend Deployment
+
+1. Ensure the backend is running and correctly linked with the `VITE_API_URL` in `.env.local`.
+2. Build the application for production:
    ```bash
    npm run build
    ```
-2. Deploy the `build` folder to a hosting service like [Netlify](https://www.netlify.com/) or [Vercel](https://vercel.com/).
-3. Configure environment variables in the hosting platform.
-
-#### **Backend**
-1. Choose a hosting platform like [Heroku](https://www.heroku.com/) or [AWS](https://aws.amazon.com/).
-2. Set environment variables in the production environment.
-3. Push your code to the production server.
-
-## Live Demo
-A live demo of the project can be accessed at:
-[linklounge.com](https://linklounge-2inr.onrender.com)
-
-## Showcase and Contact
-This project serves as a showcase of my full-stack development skills. If you have any questions or feedback, feel free to contact me through my [portfolio](https://yourportfolio.com).
+3. Deploy the `dist/` folder to a hosting provider of choice.
 
 ## License
-This project is proprietary and developed solely by **Noah Park-Nguyen**. No part of this project may be reused, modified, or distributed without explicit permission.
+This project is licensed under the MIT License.
 
